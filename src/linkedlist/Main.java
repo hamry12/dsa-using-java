@@ -14,6 +14,13 @@ public class Main {
         list.display();
         list.add(1, 24);
         list.display();
+        System.out.println("Get Value at position 3\t"+list.get(3));
+        list.remove();
+        list.display();
+        list.remove(3);
+        list.display();
+        list.remove(0);
+        list.display();
 
 //        int middleElement=list.findMiddleNode().data;
 //        System.out.println("Middle Element:\t"+middleElement);

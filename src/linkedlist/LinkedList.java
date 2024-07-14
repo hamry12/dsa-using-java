@@ -27,8 +27,8 @@ public class LinkedList {
     }
 
     /**
-     * @param index define the position at which data will be inserted
-     * @param data value which would inserted
+     * @param index position at which data will be inserted
+     * @param data which would be inserted
      */
     public void add(int index, int data){
         Node node= new Node(data);
@@ -65,20 +65,84 @@ public class LinkedList {
     /**
      * @param position will be used to retrieve the node at position
      */
-    public Node get(int position){
-        return null;
+    public Integer get(int position){
+        if(length == 0){
+            throw new RuntimeException("Empty List");
+        }
+        Node temp=head;
+        for(int i=0; i<position; i++){
+            temp=temp.next;
+        }
+        return temp.data;
     }
 
     /**
      * display List
      */
     public void display(){
+        if(length == 0){
+            throw new RuntimeException("Empty List");
+        }
         Node temp=head;
         while(temp!=null){
             System.out.print(temp.data+"->");
             temp=temp.next;
         }
         System.out.println();
+    }
+
+    /**
+     * remove data from the list at the end
+     */
+    public void remove(){
+        if(length == 0){
+            throw new RuntimeException("Empty List");
+        }
+        if(length == 1){
+            head=tail=null;
+            length=0;
+            return;
+        }
+        Node temp=head;
+        Node prev=head;
+        while(temp.next!=null){
+            prev=temp;
+            temp=temp.next;
+        }
+        prev.next=null;
+        length--;
+    }
+
+    /**
+     * @param position remove data at specified position
+     * remove data at position from the list at the end
+     */
+    public void remove(int position){
+        Node temp=head;
+        Node prev=head;
+        if(length == 0){
+            throw new RuntimeException("Empty List");
+        }
+        if(position < 0 && position > length){
+            throw new RuntimeException("Index out of bound!!");
+        }
+        if(length == 1){
+            head=tail=null;
+            length=0;
+            return;
+        }
+        if(position == 0){
+            head = head.next;
+        }else {
+
+            for (int i = 0; i < position; i++) {
+                prev = temp;
+                temp = temp.next;
+            }
+            prev.next = temp.next;
+            temp.next = null;
+        }
+        length--;
     }
 
     /**
