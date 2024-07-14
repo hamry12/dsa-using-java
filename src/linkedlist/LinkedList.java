@@ -28,41 +28,45 @@ public class LinkedList {
 
     /**
      * @param index define the position at which data will be inserted
-     * @param data
+     * @param data value which would inserted
      */
     public void add(int index, int data){
         Node node= new Node(data);
-        if(index < 0 && index > length){
-            throw new RuntimeException("Index does not exist!!");
+        if(index < 0 || index > length){
+            throw new RuntimeException("Index out of Bound!!");
         }else if(index == length) {
             add(data);
-        }else if(index == 0){
-            node.next=head;
-            head=node;
-            length++;
-        }else{
-            if(head == null){
-                head=tail=node;
-                length=1;
-                return;
+        } else if (index == 0) {
+            prepend(data);
+        }else {
+            Node temp=head;
+            Node pre=head;
+            for(int i=0; i<index; i++){
+                pre=temp;
+                temp=temp.next;
             }
-            Node currentNode=get(index-1);
-            System.out.println("currentNode=>"+currentNode.data);
-            node.next=currentNode.next;
-            currentNode.next=node;
+            pre.next=node;
+            node.next=temp;
             length++;
         }
+    }
+
+    /**
+     * @param data
+     * This would append the data to list at first position
+     */
+    public void prepend(int data){
+        Node node= new Node(data);
+        node.next=head;
+        head=node;
+        length++;
     }
 
     /**
      * @param position will be used to retrieve the node at position
      */
     public Node get(int position){
-        Node temp=head;
-        for(int jump=0; jump<position; jump++){
-            temp=temp.next;
-        }
-        return temp;
+        return null;
     }
 
     /**
@@ -71,7 +75,7 @@ public class LinkedList {
     public void display(){
         Node temp=head;
         while(temp!=null){
-            System.out.print(temp.data+"=>");
+            System.out.print(temp.data+"->");
             temp=temp.next;
         }
         System.out.println();
@@ -124,15 +128,11 @@ public class LinkedList {
     }
 
     /**
-     * @param index
-     * @param data
+     * @param index position at which data would be set/replaced
+     * @param data value which would be stored
      */
     public void set(int index, int data) {
-        Node node= new Node(data); //67
-        Node currentNode=get(index); //9
-        node.next=currentNode.next;
-        currentNode.data=node.data;
-        length++;
+
     }
 }
 
