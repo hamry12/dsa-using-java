@@ -146,58 +146,14 @@ public class LinkedList {
     }
 
     /**
-     * Find Middle Node in list
-     */
-    public Node findMiddleNode(){
-        Node fast=head;
-        Node slow=head;
-
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-        return slow;
-    }
-
-    /**
-     * To check if List has Loop
-     */
-    public boolean hasLoop(){
-        Node slow=head;
-        Node fast=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-            if(slow == fast){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @param position used to find the Kth Position
-     */
-    public Node findKthElement(int position) {
-        Node fast=head;
-        Node slow=head;
-        for(int jump=0; jump<position; jump++){
-            fast=fast.next;
-        }
-        while(fast!=null){
-            slow=slow.next;
-            fast=fast.next;
-        }
-        return slow;
-    }
-
-    /**
      * @param index position at which data would be set/replaced
      * @param data value which would be stored
      */
     public void set(int index, int data) {
 
     }
-}
 
-// 9->67->10
+    public void reverse(){
+
+    }
+}
