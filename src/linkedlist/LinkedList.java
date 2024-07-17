@@ -109,6 +109,7 @@ public class LinkedList {
             prev=temp;
             temp=temp.next;
         }
+        tail=prev;
         prev.next=null;
         length--;
     }
@@ -153,7 +154,22 @@ public class LinkedList {
 
     }
 
+    /**
+     * Reverse the Linked List
+     */
     public void reverse(){
+        Node current=head;
+        head=tail;
+        tail=current;
+        Node previous=null;
+        Node next=null;
+        while(current!=null){
+            next=current.next;
+            current.next=previous;
+            previous=current;
+            current=next;
+        }
 
     }
+
 }

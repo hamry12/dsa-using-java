@@ -17,23 +17,12 @@ public class Main {
         System.out.println("Get Value at position 3\t"+list.get(3));
         list.remove();
         list.display();
+        System.out.println("Remove Element at 4th position");
         list.remove(3);
         list.display();
-        list.remove(0);
+        System.out.println("head\t"+list.head.data);
+        System.out.println("tail\t"+list.tail.data);
+        list.reverse();
         list.display();
-
-//        int middleElement=list.findMiddleNode().data;
-//        System.out.println("Middle Element:\t"+middleElement);
-//
-//        boolean hasLoop= list.hasLoop();
-//        System.out.println("has Loop:\t"+hasLoop);
-//
-//        Node kthNode=list.findKthElement(5);
-//        if(kthNode!=null){
-//            System.out.println("Kth Node Element\t"+kthNode.data);
-//        }
-//
-//        list.set(1, 67);
-//        list.display();
     }
 }
