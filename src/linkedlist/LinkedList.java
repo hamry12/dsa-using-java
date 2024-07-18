@@ -161,15 +161,14 @@ public class LinkedList {
         Node current=head;
         head=tail;
         tail=current;
-        Node previous=null;
+        Node prev=null;
         Node next=null;
         while(current!=null){
             next=current.next;
-            current.next=previous;
-            previous=current;
+            current.next=prev;
+            prev=current;
             current=next;
         }
-
     }
 
 }
