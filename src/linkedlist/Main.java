@@ -24,5 +24,16 @@ public class Main {
         System.out.println("tail\t"+list.tail.data);
         list.reverse();
         list.display();
+
+
+        LinkedList linkedList= new LinkedList();
+        linkedList.add(20);
+        linkedList.add(4);
+        linkedList.add(15);
+        linkedList.add(10);
+        linkedList.display();
+        System.out.println(linkedList.head.data);
+        System.out.println(linkedList.tail.data);
+        System.out.println("has Loop\t"+linkedList.hasLoop());
     }
 }
