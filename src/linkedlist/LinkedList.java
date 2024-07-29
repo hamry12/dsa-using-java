@@ -191,4 +191,18 @@ public class LinkedList {
         return false;
     }
 
+    public void removeNodeGreaterThanX(int x){
+        while (head!=null && head.data>x){
+            head=head.next;
+        }
+        Node current=head;
+        while (current != null && current.next != null) {
+            if (current.next.data > x) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
 }
