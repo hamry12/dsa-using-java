@@ -205,4 +205,8 @@ public class LinkedList {
         }
     }
 
+    public Integer getLength(){
+        return length;
+    }
+
 }
