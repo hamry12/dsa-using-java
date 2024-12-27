@@ -160,53 +160,35 @@ public class LinkedList {
      * Reverse the Linked List
      */
     public void reverse(){
-        Node current=head;
+        Node temp=head;
         head=tail;
-        tail=current;
-        Node prev=null;
-        Node next=null;
-        while(current!=null){
-            next=current.next;
-            current.next=prev;
-            prev=current;
-            current=next;
-        }
-    }
-
-    /**
-     *  Check if List has loop
-     *  Floyd's cycle-finding
-     */
-    public boolean hasLoop(){
-        Node slow=head;
-        Node fast=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-            if(slow == fast){
-                return true;
-            }
-        }
-        System.out.println("No Cycle Found");
-        return false;
-    }
-
-    public void removeNodeGreaterThanX(int x){
-        while (head!=null && head.data>x){
-            head=head.next;
-        }
-        Node current=head;
-        while (current != null && current.next != null) {
-            if (current.next.data > x) {
-                current.next = current.next.next;
-            } else {
-                current = current.next;
-            }
+        tail=temp;
+        Node after=temp.next;
+        Node before=null;
+        for(int i=0; i<length; i++){
+            after=temp.next;
+            temp.next=before;
+            before=temp;
+            temp=after;
         }
     }
 
     public Integer getLength(){
         return length;
+    }
+
+    public Node findMiddle(){
+        int middle=0;
+        if(length%2==0){
+            middle=(length/2)+1;
+        }else{
+            middle=length/2;
+        }
+        Node temp=head;
+        for(int i=0; i<middle; i++){
+            temp=temp.next;
+        }
+        return temp;
     }
 
 }
