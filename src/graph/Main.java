@@ -3,23 +3,25 @@ package graph;
 public class Main {
     public static void main(String[] args) {
 
-        Graph graph= new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
+        AdjacencyMatrix adjacencyMatrix= new AdjacencyMatrix(4);
+        adjacencyMatrix.addEdges(1,2);
+        adjacencyMatrix.addEdges(1, 4);
+        adjacencyMatrix.addEdges(2,3);
+        adjacencyMatrix.addEdges(3, 4);
+        adjacencyMatrix.addEdges(2, 4);
+        adjacencyMatrix.removeEdges(2,4);
+        System.out.println("Initial Matrix");
+        adjacencyMatrix.display();
 
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("A", "D");
-        graph.addEdge("B", "C");
-        graph.addEdge("B", "D");
-        graph.addEdge("C", "D");
+        adjacencyMatrix.addVertex();
+        adjacencyMatrix.addEdges(5, 1);
+        adjacencyMatrix.addEdges(2, 5);
+        System.out.println("After adding New Vertex");
+        adjacencyMatrix.display();
 
-        graph.printGraph();
-        graph.removeEdge("A", "B");
-        graph.removeVertex("D");
-        graph.printGraph();
+        System.out.println("Removing Vertex");
+        adjacencyMatrix.removeVertex(3);
+        adjacencyMatrix.display();
 
     }
 }
