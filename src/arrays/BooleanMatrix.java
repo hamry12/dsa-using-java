@@ -18,14 +18,12 @@ public class BooleanMatrix {
         int column=arr[0].length;
         for(int i=0;i<rows; i++){
             for(int j=0; j<column; j++){
-//                System.out.print(arr[i][j]+"\t");
                 if(arr[i][j] == 1){
                     arr=markRow(arr, i);
                     arr=markColumn(arr, j);
                 }
             }
         }
-        System.out.println("After");
         markOne(arr, rows, column);
     }
 
