@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class JavaStreams {
 
-    private static List<Employee> employeeList;
+    private static final List<Employee> employeeList;
     static {
         Project p1=new Project("P001", "Project1", "ABC", "Lead1");
         Project p2=new Project("P002", "Project2", "XYZ", "Lead3");
@@ -16,21 +16,19 @@ public class JavaStreams {
         Project p6=new Project("P006", "Project6", "PQR", "Lead3");
 
         employeeList= new ArrayList<>();
-        employeeList.add(new Employee(1, "Gunja", "IT", Arrays.asList(p3,p1), 45897.0, "Female"));
-        employeeList.add(new Employee(1, "Chandan", "IT", Arrays.asList(p4,p1,p5), 73000.0, "Male"));
-        employeeList.add(new Employee(1, "Pallavi", "Design", Arrays.asList(p2,p4), 63000.0, "Female"));
-        employeeList.add(new Employee(1, "Shivam", "Law", Arrays.asList(p3,p1), 39879.0, "Male"));
-        employeeList.add(new Employee(1, "Pragati", "IT", Arrays.asList(p1), 57000.0, "Female"));
-        employeeList.add(new Employee(1, "Chandranshu", "IT", Arrays.asList(p2,p3), 145897.0, "Male"));
-        employeeList.add(new Employee(1, "Shradha", "QA", Arrays.asList(p5), 51000.0, "Female"));
-        employeeList.add(new Employee(1, "Smriti", "SAP", Arrays.asList(p2), 93000.0, "Female"));
+        employeeList.add(new Employee(1, "Gunja", "IT", List.of(p3,p1), 45897.0, "Female"));
+        employeeList.add(new Employee(1, "Chandan", "IT", List.of(p4,p1,p5), 73000.0, "Male"));
+        employeeList.add(new Employee(1, "Pallavi", "Design", List.of(p2,p4), 63000.0, "Female"));
+        employeeList.add(new Employee(1, "Shivam", "Law", List.of(p3,p1), 39879.0, "Male"));
+        employeeList.add(new Employee(1, "Pragati", "IT", List.of(p6), 57000.0, "Female"));
+        employeeList.add(new Employee(1, "Chandranshu", "IT", List.of(p2,p3), 145897.0, "Male"));
+        employeeList.add(new Employee(1, "Shradha", "QA", List.of(p5), 51000.0, "Female"));
+        employeeList.add(new Employee(1, "Smriti", "SAP", List.of(p2), 93000.0, "Female"));
     }
 
     public static void main(String[] args) {
         System.out.println("For Each -->");
-        employeeList.forEach(emp->{
-            System.out.println(emp.getName()+"\t"+emp.getGender());
-        });
+        employeeList.forEach(emp-> System.out.println(emp.getName()+"\t"+emp.getGender()));
 
         System.out.println("\n##Filter Method -->");
         List<Employee> filteredEmployee= employeeList
@@ -44,8 +42,8 @@ public class JavaStreams {
         filteredEmployee.forEach(System.out::println);
 
         System.out.println("\n ### Map--->");
-        Set<String> departmnetList= employeeList.stream().map(Employee::getDept).collect(Collectors.toSet());
-        System.out.println(departmnetList);
+        Set<String> departmentName= employeeList.stream().map(Employee::getDept).collect(Collectors.toSet());
+        System.out.println(departmentName);
 
         System.out.println("##Project Names-->");
         List<Stream<String>> projectStreamList= employeeList
@@ -73,7 +71,7 @@ public class JavaStreams {
         System.out.println("\n## Min and Max");
         Optional<Employee> optMaxList = employeeList.stream()
                 .max(Comparator.comparing(Employee::getSalary));
-        System.out.println(optMaxList.get());
+        System.out.println(optMaxList.orElseGet(Employee::new));
 
         System.out.println("\n## GroupBy Gender");
         Map<String, List<Employee>> groupedList= employeeList.stream()
