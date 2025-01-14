@@ -47,27 +47,37 @@ public class AdjacencyList {
         List<Integer> visitedList= new ArrayList<>();
 
         stack.push(startingVertex);
+        while(!stack.isEmpty()){
+            int top=stack.pop();
+            if(!visitedList.contains(top))
+                visitedList.add(top);
 
-        while (!stack.isEmpty()) {
-            // Pop the top element
-            int currentNode = stack.pop();
-
-            // Check if the node is already visited
-            if (!visitedList.contains(currentNode)) {
-                // Mark the node as visited
-                visitedList.add(currentNode);
-
-                // Get all neighboring nodes
-                List<Integer> neighbouringNodes = map.getOrDefault(currentNode, new ArrayList<>());
-
-                // Push unvisited neighbors onto the stack
-                for (Integer neighbour : neighbouringNodes) {
-                    if (!visitedList.contains(neighbour)) {
-                        stack.push(neighbour);
-                    }
+            List<Integer> findNeighbours=map.get(top);
+            for(int i=0; i<findNeighbours.size(); i++){
+                if(!visitedList.contains(findNeighbours.get(i))){
+                    stack.push(findNeighbours.get(i));
                 }
             }
         }
-        System.out.println("Visited nodes: " + visitedList);
+        System.out.println("Visited nodes: DFS:" + visitedList);
+    }
+
+    public void bfs(int startingVertex){
+        Queue<Integer> queue= new LinkedList<>();
+        List<Integer> visitedList= new ArrayList<>();
+        queue.add(startingVertex);
+
+        while(!queue.isEmpty()){
+            Integer first= queue.poll();
+            if(!visitedList.contains(first))
+                visitedList.add(first);
+            List<Integer> neighbouringElements= map.get(first);
+            for(Integer element:neighbouringElements){
+                if(!visitedList.contains(element)){
+                    queue.add(element);
+                }
+            }
+        }
+        System.out.println("BFS: Visited List: "+visitedList);
     }
 }

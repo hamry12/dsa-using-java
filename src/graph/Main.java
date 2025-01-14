@@ -1,5 +1,8 @@
 package graph;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 //        adjacencyMatrixMethod(new AdjacencyMatrix(4));
@@ -12,19 +15,23 @@ public class Main {
         adjacencyList.addVertex(2);
         adjacencyList.addVertex(3);
         adjacencyList.addVertex(4);
-        System.out.println("#### Adding Edges ###########");
+        adjacencyList.addVertex(5);
+//        System.out.println("#### Adding Edges ###########");
         adjacencyList.addEdges(1,2);
-        adjacencyList.addEdges(1,4);
-        adjacencyList.addEdges(2,3);
-        adjacencyList.addEdges(3,4);
+        adjacencyList.addEdges(1,5);
+        adjacencyList.addEdges(2,5);
+        adjacencyList.addEdges(3,5);
         adjacencyList.addEdges(2,4);
         adjacencyList.display();
-        System.out.println("###########Remove Edge############");
-        adjacencyList.removeEdges(2,4);
-        adjacencyList.display();
-        System.out.println("###### Remove Vertex #######");
-        adjacencyList.removeVertex(4);
-        adjacencyList.display();
+//        System.out.println("###########Remove Edge############");
+//        adjacencyList.removeEdges(2,4);
+//        adjacencyList.display();
+//        System.out.println("###### Remove Vertex #######");
+//        adjacencyList.removeVertex(4);
+//        adjacencyList.display();
+
+        adjacencyList.dfs(1);
+        adjacencyList.bfs(1);
 
     }
 
