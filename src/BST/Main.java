@@ -10,9 +10,8 @@ public class Main {
         bst.insert(53);
         bst.insert(55);
 
-        System.out.println("Value Exist \t"+bst.contains(53));
-        System.out.println("Value Exist \t"+bst.contains(19));
-        System.out.println("Value Exist \t"+bst.contains(72));
+        System.out.println("In Order Traversal");
+        bst.inOrderTraversal();
 
     }
 }

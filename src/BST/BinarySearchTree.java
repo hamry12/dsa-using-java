@@ -14,14 +14,12 @@ public class BinarySearchTree {
         // check if root node is empty
         if(rootNode == null){
             rootNode=node;
-            System.out.println("root Node ->"+data);
             return true;
         }
         // create temp node for traversal
         Node temp=rootNode;
         while(true){
             if(temp.data == data){
-                System.out.println("Already Exist ->"+data);
                 return false;
             }
             if(data > temp.data){
@@ -67,4 +65,17 @@ public class BinarySearchTree {
         }
     }
 
+    public void inOrderTraversal() {
+        inOrderTraversal(rootNode);
+        System.out.println();
+    }
+
+    private void inOrderTraversal(Node rootNode) {
+        if(rootNode == null){
+            return;
+        }
+        inOrderTraversal(rootNode.left);
+        System.out.print(rootNode.data+"->");
+        inOrderTraversal(rootNode.right);
+    }
 }
