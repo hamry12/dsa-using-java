@@ -8,7 +8,7 @@ public class LongestPalindromeSubstring {
     }
 
     private static String longestPalindrome(String input) {
-        if (input == null || input.length() < 1) {
+        if (input == null || input.isEmpty()) {
             return "";
         }
 
