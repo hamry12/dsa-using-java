@@ -13,7 +13,26 @@ public class LeftArrayRot {
         int remainderTimes=times % arr.size();
         System.out.println("remainder\t"+remainderTimes);
 //        leftRotate(arr, remainderTimes);
-        method1(arr, remainderTimes);
+//        method1(arr, remainderTimes);
+        method2(arr, remainderTimes);
+    }
+
+    private static void method2(List<Integer> arr, int remainderTimes) {
+        arr=reverseArr(arr, 0, remainderTimes-1);
+        arr=reverseArr(arr, remainderTimes, arr.size()-1);
+        arr=reverseArr(arr, 0, arr.size()-1);
+        System.out.println(arr);
+    }
+
+    private static List<Integer> reverseArr(List<Integer> arr, int start, int end) {
+        while(start < end){
+            int temp=arr.get(start);
+            arr.set(start, arr.get(end));
+            arr.set(end, temp);
+            start++;
+            end--;
+        }
+        return arr;
     }
 
     private static void method1(List<Integer> arr, int remainderTimes) {

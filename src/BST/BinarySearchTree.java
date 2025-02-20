@@ -1,5 +1,9 @@
 package BST;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 public class BinarySearchTree {
     private Node rootNode;
 
@@ -77,5 +81,39 @@ public class BinarySearchTree {
         inOrderTraversal(rootNode.left);
         System.out.print(rootNode.data+"->");
         inOrderTraversal(rootNode.right);
+    }
+
+    public int diameterOfTree(){
+        Map<Node, Integer> heightMap= new HashMap<>();
+        Stack<Node> stack= new Stack<>();
+        stack.push(rootNode);
+        int diameter=0;
+        int count=1;
+        while(!stack.isEmpty()){
+            System.out.println("count==>"+count);
+            Node temp=stack.peek();
+            System.out.println("Peeked==>"+temp.data);
+            if(temp.left!=null && !heightMap.containsKey(temp.left)){
+                System.out.println("Left Data\t"+temp.left.data);
+                stack.push(temp.left);
+            } else if (temp.right != null && !heightMap.containsKey(temp.right)) {
+                System.out.println("Right Data\t"+temp.right.data);
+                stack.push(temp.right);
+            }else{
+                stack.pop();
+
+                int leftheight= heightMap.getOrDefault(temp.left, 0);
+                System.out.println("Left height\t @Node\t"+leftheight);
+
+                int rightheight = heightMap.getOrDefault(temp.right, 0);
+                System.out.println("Right height\t @ Node\t"+ rightheight);
+
+                heightMap.put(temp, 1+ Math.max(leftheight, rightheight));
+                diameter=  Math.max(diameter, leftheight+rightheight);
+            }
+
+            count++;
+        }
+        return diameter;
     }
 }
